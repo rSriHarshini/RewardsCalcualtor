@@ -38,3 +38,51 @@ Quick summary
 ### Who do I talk to? ###
 
     Admin: harshinir693@gmail.com
+
+### Sample Input Data Curl ###
+
+curl --location --request POST 'http://localhost:9091/v1/customerServices/rewards/' \
+--header 'Content-Type: application/json' \
+--data-raw ' [
+        {
+            "Date": "2022-06-18",
+            "Amount": 100
+        },
+        {
+            "Date": "2022-06-19",
+            "Amount": 150
+        },
+         {
+            "Date": "2022-06-30",
+            "Amount": 50
+        },
+          {
+            "Date": "2022-06-01",
+            "Amount": 40
+        },
+         {
+            "Date": "2022-05-31",
+            "Amount": 100
+        },
+         {
+            "Date": "2022-05-03",
+            "Amount": 150
+        } ,
+        {
+            "Date": "2022-07-19",
+            "Amount": 150
+        },
+        {
+            "Date": "2022-07-31",
+            "Amount": 15
+        }
+    ]
+'
+
+### Expected Data output ###
+
+{
+    "June": 200,
+    "May": 200,
+    "July": 150
+}

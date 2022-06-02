@@ -3,7 +3,6 @@ package com.customer.rewardPoints.controller;
 import com.customer.rewardPoints.service.RewardPointsApplicationService;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
 public class RewardPointsApplicationControllerTest {
@@ -14,9 +13,8 @@ public class RewardPointsApplicationControllerTest {
     protected RewardPointsApplicationController rewardPointsApplicationController;
 
     @BeforeEach
-    public void init()
-    {
+    public void init() {
         rewardPointsApplicationController = new RewardPointsApplicationController();
     }
-    
+
 }

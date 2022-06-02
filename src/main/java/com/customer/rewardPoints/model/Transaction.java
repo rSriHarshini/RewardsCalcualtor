@@ -2,8 +2,12 @@ package com.customer.rewardPoints.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Transaction {
+    @JsonProperty("Date")
     private Date transactionDate;
+    @JsonProperty("Amount")
     private Integer transactionAmount;
 
     public Transaction() {
@@ -30,6 +34,4 @@ public class Transaction {
         this.transactionAmount = transactionAmount;
     }
 
-
-    
 }
