@@ -15,7 +15,7 @@ Quick summary
 
 ### How do I get set up? ###
 
-    git clone #githubclonelink
+    git clone ##githubclonelink##
 
 ### How to build and set up the application? ###
 
@@ -42,47 +42,72 @@ Quick summary
 ### Sample Input Data Curl ###
 
 curl --location --request POST 'http://localhost:9091/v1/customerServices/rewards/' \
+--header 'Accept: application/json' \
 --header 'Content-Type: application/json' \
---data-raw ' [
-        {
-            "Date": "2022-06-18",
-            "Amount": 100
-        },
-        {
-            "Date": "2022-06-19",
-            "Amount": 150
-        },
-         {
-            "Date": "2022-06-30",
-            "Amount": 50
-        },
-          {
-            "Date": "2022-06-01",
-            "Amount": 40
-        },
-         {
-            "Date": "2022-05-31",
-            "Amount": 100
-        },
-         {
-            "Date": "2022-05-03",
-            "Amount": 150
-        } ,
-        {
-            "Date": "2022-07-19",
-            "Amount": 150
-        },
-        {
-            "Date": "2022-07-31",
-            "Amount": 15
-        }
-    ]
-'
+--data-raw '[
+   { 
+    "CustomerName": "Harry",
+    "CustomerId": "123",
+    "Transactions" : [
+    {
+        "Date":"2022-04-01",
+        "Amount":"150" 
+    },
+    {
+        "Date":"2022-01-15",
+        "Amount":"155"
+    },
+     {
+        "Date":"2022-06-04",
+        "Amount":"155"
+    },
+    {
+        "Date":"2022-06-02",
+        "Amount":"155"
+    }
+]
+   },
+   { 
+    "CustomerName": "Arya",
+    "CustomerId": "123",
+    "Transactions" : [
+    {
+        "Date":"2022-01-01",
+        "Amount":"150" 
+    },
+    {
+        "Date":"2022-07-15",
+        "Amount":"155"
+    },
+     {
+        "Date":"2022-07-04",
+        "Amount":"155"
+    },
+     {
+        "Date":"2022-05-02",
+        "Amount":"155"
+    }
+]
+   }
+]'
 
 ### Expected Data output ###
 
-{
-    "June": 200,
-    "May": 200,
-    "July": 150
-}
+[
+    {
+        "customerName": "Harry",
+        "rewardsMap": {
+            "June": 320,
+            "January": 160,
+            "April": 150
+        }
+    },
+    {
+        "customerName": "Arya",
+        "rewardsMap": {
+            "May": 160,
+            "July": 320,
+            "January": 150
+        }
+    }
+]
