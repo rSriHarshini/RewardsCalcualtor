@@ -1,10 +1,13 @@
 package com.customer.rewardPoints.service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.customer.rewardPoints.model.Customer;
+import com.customer.rewardPoints.model.CustomerOutput;
 import com.customer.rewardPoints.model.Transaction;
 
 import org.springframework.stereotype.Service;
@@ -42,5 +45,17 @@ public class RewardPointsApplicationService {
       }
 
       return reward;
+   }
+
+   public List<CustomerOutput> getRewardsForACustomer(List<Customer> customerDetails) {
+      Map<String, Integer> rewardsMap = new HashMap<String, Integer>();
+      List<CustomerOutput> customerRewardsList = new ArrayList<CustomerOutput>();
+
+      for (Customer customer : customerDetails) {
+         rewardsMap = getRewards(customer.getTransactionList());
+         customerRewardsList.add(new CustomerOutput(customer.getCustomerName(), rewardsMap));
+      }
+      return customerRewardsList;
+
    }
 }
